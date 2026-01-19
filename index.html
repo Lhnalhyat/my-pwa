@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>سلة الإكسسوارات</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+<style>
+body { font-family: Arial; padding: 20px; }
+.product { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+button { padding: 5px 10px; }
+</style>
+</head>
+<body>
+
+<h2>🛍️ سلة الإكسسوارات</h2>
+
+<div class="product">
+  <strong>مسكة شعر</strong><br>
+  السعر: 5 دينار<br>
+  <button onclick="add()">+</button>
+  <span id="qty">1</span>
+  <button onclick="sub()">-</button>
+</div>
+
+<p>الإجمالي: <span id="total">5</span> دينار</p>
+
+<a href="https://pay.example.com" target="_blank">
+<button>ادفع الآن</button>
+</a>
+
+<script>
+let qty=1;
+function add(){ if(qty<5){ qty++; update(); } }
+function sub(){ if(qty>1){ qty--; update(); } }
+function update(){
+ document.getElementById('qty').innerText=qty;
+ document.getElementById('total').innerText=qty*5;
+}
+</script>
+
+</body>
+</html>
